@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "897942518599",
+    "firebase_url": "https://feecommunity-16f26.firebaseio.com",
+    "project_id": "feecommunity-16f26",
+    "storage_bucket": "feecommunity-16f26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897942518599:android:e7cea1d70af3a0c9",
+        "android_client_info": {
+          "package_name": "ebrahimoseif.com.FeeCommunity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897942518599-jlmvgp1hpf77fnp5tcbk9ars74qsrkhm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ebrahimoseif.com.FeeCommunity",
+            "certificate_hash": "8993efe2f4c6b24ca9224700a396cd116e0fa5c4"
+          }
+        },
+        {
+          "client_id": "897942518599-j58segelf1tcnkcnep02p733vnvl693o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPgZQ3CEBcDwiynC9eLYP1WXkkmc2eIQ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897942518599-j58segelf1tcnkcnep02p733vnvl693o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,8 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,10 +51,11 @@ public class SearchActivity extends AppCompatActivity{
     //widgets
     private EditText mSearchParam;
     private ListView mListView;
-
+    private ImageView mSearchImage;
     //vars
     private List<User> mUserList;
     private UserListAdapter mAdapter;
+    ///private AutoCompleteTextView autoCompleteTextView1
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,13 +63,47 @@ public class SearchActivity extends AppCompatActivity{
         setContentView(R.layout.activity_search);
         mSearchParam = (EditText) findViewById(R.id.search);
         mListView = (ListView) findViewById(R.id.listView);
+        mSearchImage= (ImageView) findViewById(R.id.searchImage);
+
+
         Log.d(TAG, "onCreate: started.");
+
 
         hideSoftKeyboard();
         setupBottomNavigationView();
-        initTextListener();
+        searchListener();
+       // initTextListener();
     }
+/**
+    private ArrayAdapter<String> getUsernameAdapter(Context context) {
+         final ArrayList<String> usernames = new ArrayList<>();
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child(getString(R.string.dbname_users))
+                .orderByChild(getString(R.string.field_username)); // .equalTo(keyword);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot :  dataSnapshot.getChildren()){
+                    usernames.add(singleSnapshot.getValue(User.class).getUsername());
+                   }
+            }
+                    @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                    }
+        });
+        return new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, usernames);
+        }
+
+
+
+*/
+
+
+
+
+/**
     private void initTextListener(){
         Log.d(TAG, "initTextListener: initializing");
 
@@ -90,26 +129,55 @@ public class SearchActivity extends AppCompatActivity{
         });
     }
 
-    private void searchForMatch(String keyword){
+ */
+
+    private void searchListener(){
+
+        Log.d(TAG, "searchListener: get serach words");
+
+        mUserList = new ArrayList<>();
+
+        mSearchImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+           String text =  mSearchParam.getText().toString();
+
+
+                Toast.makeText(mContext, TAG + "you searched for " +text , Toast.LENGTH_LONG).show();
+                searchForMatch(text);
+
+            }
+        });
+    }
+
+    private void searchForMatch(final String keyword){
         Log.d(TAG, "searchForMatch: searching for a match: " + keyword);
         mUserList.clear();
         //update the users list view
         if(keyword.length() ==0){
-
+            Toast.makeText(mContext,TAG + "Sorry no match found ", Toast.LENGTH_LONG).show();
         }else{
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             Query query = reference.child(getString(R.string.dbname_users))
-                    .orderByChild(getString(R.string.field_username)).equalTo(keyword);
+                    .orderByChild(getString(R.string.field_username)); // .equalTo(keyword);
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot singleSnapshot :  dataSnapshot.getChildren()){
+                        if ( singleSnapshot.getValue(User.class).getUsername().equals(keyword))
+                        {
                         Log.d(TAG, "onDataChange: found user:" + singleSnapshot.getValue(User.class).toString());
+                        Toast.makeText(mContext, TAG + "you searched for " +singleSnapshot.getValue(User.class).toString()
+                                , Toast.LENGTH_LONG).show();
 
                         mUserList.add(singleSnapshot.getValue(User.class));
                         //update the users list view
                         updateUsersList();
+                        }
                     }
+
+
                 }
 
                 @Override

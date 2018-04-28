@@ -2,8 +2,10 @@ package ebrahimoseif.com.FeeCommunity.Home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import ebrahimoseif.com.FeeCommunity.Login.LoginActivity;
 import ebrahimoseif.com.FeeCommunity.R;
+import ebrahimoseif.com.FeeCommunity.Share.ShareActivity;
 import ebrahimoseif.com.FeeCommunity.Utils.BottomNavigationViewHelper;
 import ebrahimoseif.com.FeeCommunity.Utils.MainfeedListAdapter;
 import ebrahimoseif.com.FeeCommunity.Utils.SectionsPagerAdapter;
@@ -140,7 +143,12 @@ public class HomeActivity extends AppCompatActivity implements
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_camera);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_instagram_black);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
+
+
+
+
     }
+
 
     /**
      * BottomNavigationView setup

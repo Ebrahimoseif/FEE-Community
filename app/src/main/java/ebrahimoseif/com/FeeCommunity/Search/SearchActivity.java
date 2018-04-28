@@ -55,7 +55,8 @@ public class SearchActivity extends AppCompatActivity{
     //vars
     private List<User> mUserList;
     private UserListAdapter mAdapter;
-    ///private AutoCompleteTextView autoCompleteTextView1
+    //private AutoCompleteTextView autoCompleteTextView1;
+    //private ArrayAdapter<String> mArrayAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,8 +66,12 @@ public class SearchActivity extends AppCompatActivity{
         mListView = (ListView) findViewById(R.id.listView);
         mSearchImage= (ImageView) findViewById(R.id.searchImage);
 
+        //autoCompleteTextView1 = (AutoCompleteTextView) findViewById(R.id.search);
 
+        //mArrayAdapter = getUsernameAdapter(this);
+        //autoCompleteTextView1.setAdapter(mAdapter);
         Log.d(TAG, "onCreate: started.");
+
 
 
         hideSoftKeyboard();
@@ -74,7 +79,9 @@ public class SearchActivity extends AppCompatActivity{
         searchListener();
        // initTextListener();
     }
-/**
+
+
+    /**
     private ArrayAdapter<String> getUsernameAdapter(Context context) {
          final ArrayList<String> usernames = new ArrayList<>();
 
@@ -95,10 +102,10 @@ public class SearchActivity extends AppCompatActivity{
         });
         return new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, usernames);
         }
-
-
-
 */
+
+
+
 
 
 

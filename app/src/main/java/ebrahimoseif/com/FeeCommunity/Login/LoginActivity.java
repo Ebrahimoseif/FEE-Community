@@ -8,8 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private EditText mEmail, mPassword;
     private TextView mPleaseWait;
+    private ImageView logo;
+    private LinearLayout layout;
 
 
     @Override
@@ -51,13 +56,42 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.input_email);
         mPassword = (EditText) findViewById(R.id.input_password);
         mContext = LoginActivity.this;
+        logo = (ImageView) findViewById(R.id.logo);
+        layout = (LinearLayout) findViewById(R.id.linLayout);
         Log.d(TAG, "onCreate: started.");
 
         mPleaseWait.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.GONE);
 
         setupFirebaseAuth();
+        hideKeyBoard();
         init();
+
+    }
+
+
+
+    private void hideKeyBoard(){
+
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        });
+
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        });
+
+
 
     }
 

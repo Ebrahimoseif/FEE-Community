@@ -7,8 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView loadingPleaseWait;
     private Button btnRegister;
     private ProgressBar mProgressBar;
+    private LinearLayout layout;
+    private TextView tvWord;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -57,11 +61,37 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         mContext = RegisterActivity.this;
         firebaseMethods = new FirebaseMethods(mContext);
+
+
         Log.d(TAG, "onCreate: started.");
 
         initWidgets();
         setupFirebaseAuth();
         init();
+    }
+
+
+    private void hideKeyBoard(){
+
+        tvWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        });
+
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        });
+
+
     }
 
     private void init(){
@@ -101,6 +131,8 @@ public class RegisterActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         loadingPleaseWait = (TextView) findViewById(R.id.loadingPleaseWait);
         mPassword = (EditText) findViewById(R.id.input_password);
+        layout = (LinearLayout) findViewById(R.id.linLayout);
+        tvWord = (TextView) findViewById(R.id.tvWord);
         mContext = RegisterActivity.this;
         mProgressBar.setVisibility(View.GONE);
         loadingPleaseWait.setVisibility(View.GONE);

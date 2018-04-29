@@ -10,6 +10,7 @@
     android:paddingTop="55dp"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
+    android:id="@+id/linLayout"
     >
 
     <TextView
@@ -19,7 +20,8 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:gravity="center_horizontal"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginBottom="40dp"
+        android:id="@+id/tvWord"/>
 
 
     <android.support.design.widget.TextInputLayout

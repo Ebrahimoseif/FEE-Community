@@ -17,24 +17,23 @@
                 android:layout_height="match_parent">
 
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:hint="Search..."
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/search"
-                    android:background="@null"/>
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_backarrow"
+                   android:layout_marginLeft="15dp"
+                   android:id="@+id/msgback"/>
 
-                <ImageView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight= "true"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_search"
-                    android:id="@+id/searchImage"/>
+                    android:id="@+id/msgbar"
+                    android:textColor="@color/black"
+                    android:text="Messages"
+                    android:layout_toRightOf="@+id/msgback"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="23sp"
+                    />
 
 
 

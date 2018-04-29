@@ -55,7 +55,7 @@ public class CameraFragment extends Fragment {
             Bitmap bitmap;
             bitmap = (Bitmap) data.getExtras().get("data");
 
-            if(  data.getFlags() == 0 ){
+            if(  data.getFlags() == 0 ){ // root task which will get image and post it
                 try{
                     Log.d(TAG, "onActivityResult: received new bitmap from camera: " + bitmap);
                     Intent intent = new Intent(getActivity(), NextActivity.class);
@@ -79,8 +79,7 @@ public class CameraFragment extends Fragment {
 
         }
     }
-
-    }
+}
 
 
 
